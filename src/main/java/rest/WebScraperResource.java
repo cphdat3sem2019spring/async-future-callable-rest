@@ -31,7 +31,10 @@ public class WebScraperResource {
 
   public WebScraperResource() {
   }
-
+  /* READ BELOW BEFORE YOU START
+  // This part does not work with Tomcat 8.0.27 (default Tomcat with NetBeans)
+  // If you wan't to test async Jersey endpoints upgrade your Tomcat Server (Tested with 8.5.54)
+   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("slow")
@@ -90,6 +93,16 @@ public class WebScraperResource {
   @Path("tags")
   public void getTags(@Suspended final AsyncResponse asyncResponse) {
     asyncResponse.resume(makeResponse());
+  }
+  */
+  
+  
+  //If you have upgraded your Tomcat Server, remove this method and use the async version above
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("tags1")
+  public String getTags() {
+    return makeResponse();
   }
 
   private String makeResponse() {
